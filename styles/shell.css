@@ -1,0 +1,63 @@
+:root {
+    --shell-modal-color: rgb(56, 56, 56);
+}
+
+
+@keyframes shell-overlay-fade {
+    0% {
+        background-color: rgba(0, 0, 0, 0);
+    }
+    100% {
+        background-color: rgba(0, 0, 0, 0.637);
+    }
+}
+.shell_overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+
+    /* kkkkk css */
+    z-index: 99999;
+}
+.shell_overlay_anim {
+    animation-name: shell-overlay-fade;
+    animation-duration: 300ms;
+    animation-iteration-count: 1;
+    background-color: rgba(0, 0, 0, 0.637);
+}
+.shell_overlay_hidden {
+    display: none !important;
+}
+
+@keyframes shell-modal-grow {
+    0% {
+        height: 0px;
+        width: 0px;
+    }
+    100% {
+        height: 70%;
+        width: 70%;
+    }
+}
+.shell_modal_container {
+    padding: 2.5em;
+    border-radius: 15px;
+    background-color: var(--shell-modal-color);
+}
+.shell_modal_anim {
+    animation-name: shell-modal-grow;
+    animation-duration: 600ms;
+    height: 70%;
+    width: 70%;
+}
+
+.shell_iframe {
+    border: none;
+    height: 100%;
+    width: 100%;
+}
+
+
