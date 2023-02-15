@@ -42,7 +42,7 @@ body, html {
 }
 .hento-info-preview{
     height: 100%;
-    background-color: rgb(138, 136, 248);
+    background-color: var(--background-3);
     color: white;
     text-align: center;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -64,7 +64,7 @@ body, html {
 #tag-input {
     border: none;
     border-radius: 10px;
-    width: 330px;
+    width: 20em;
     height: 2.2em;
     margin: 20px;
     background-color:  var(--background-2);
@@ -72,12 +72,11 @@ body, html {
     font-size: 19px;
     padding: 0 1em;
 }
-#hr-input-posts{
-    height:2px;
-    width: 80%;
-    border-width:0;
-    color:gray;
-    background-color:gray
+#tag-input::placeholder { 
+    color: rgb(224, 224, 224);
+  }
+#post-container {
+    background-color: var(--background-2);
 }
 input:focus,
 select:focus,
