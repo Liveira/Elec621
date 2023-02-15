@@ -34,6 +34,6 @@ function posts_update(posts: Post[]) {
 ipcMain.handle("search_reload", (e, tags) => {
   e621.posts.search({ tags: tags, limit: 75, page: 1 }).then((posts) => {
     posts_update(posts);
-    posts[0].rating
+    posts[0]
   })
 });

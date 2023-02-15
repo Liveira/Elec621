@@ -6,13 +6,14 @@ posts.on_posts((e, posts) => {
 function load_posts(posts) {
     const hento_container = document.getElementById("hento_container");
     posts.forEach(post => {
+        var url
         if (post.tags.general.includes("young") && post.rating != "s") {
-            const image = fabricateElement(`<img class="hento_post" src=${post.file.url} alt=${post.id}></img>`)
-            hento_container.appendChild(image);
+            url = post.file.url
         } else { 
-            const image = fabricateElement(`<img class="hento_post" src=${post.preview.url} alt=${post.id}></img>`)
-            hento_container.appendChild(image);
+            url = post.preview.url
         }
+        const image = fabricateElement(`<div class="hento-div"><img class="hento_post" src=${url} alt=${post.id}></img><div class="hento-info-preview"><span class="fav-count">❤️${post.fav_count}</span> <span class="score-total">⬆️${post.score.total}</span> <span class="post-rating">${post.rating.toUpperCase()}</span></div></div>`)
+        hento_container.appendChild(image);
     });
 }
 var searchbar = document.getElementById("tag-input")

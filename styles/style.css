@@ -1,14 +1,20 @@
+:root {
+    --background-3: #79558f;
+    --background-2: #624079;
+    --background: #4c2b62;
+}
 body, html {
     margin: 0;
     border: 0;
-    background-color: #292929;
+    background-color: var(--background);
 }
 
 /* variáveis do css */
-:root {
-    --pessoa-linda: antoneo gustavo;
-    --Tropicália: ou Panis et Circenses;
-    --cor-idiota-fds: #ffffff;
+
+@keyframes blink {
+    50% {
+        border-color: rgb(228, 138, 138);
+    }
 }
 
 .hento_container {
@@ -21,48 +27,47 @@ body, html {
     align-items: center;
     flex-flow: wrap;
 }
-
-.hento_post {
-    /* border-bottom: 0.3em solid rgb(138, 136, 248); */
-    border-radius: 10px;
-    border: 0.2em solid rgb(199, 84, 84);
+.hento-div{
     margin: 0.3em;
+}
+.hento_post {
     max-width: 8em;
+    width: 100%;
 }
-
-@keyframes blink {
-    50% {
-        border-color: rgb(228, 138, 138);
-    }
-}
-
 .hento_post:hover{
-    animation: blink;
+    /*animation: blink;
     animation-iteration-count: infinite;
-    animation-duration: 1s;
+    animation-duration: 1s;*/
     cursor:pointer;
 }
-
+.hento-info-preview{
+    height: 100%;
+    background-color: rgb(138, 136, 248);
+    color: white;
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
 #mainContainer {
     display: flex;
     flex-direction: column;
+    
     height: 100%;
     width: 100%;
 }
 
 #topBar {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    border-bottom: 2px solid gray;
+    align-items: left;
+    justify-content: left;
+    border-bottom: 2px solid var(--background-2);
 }
 #tag-input {
     border: none;
     border-radius: 10px;
     width: 330px;
-    height: 30px;
+    height: 2.2em;
     margin: 20px;
-    background-color: #5e5e5e;
+    background-color:  var(--background-2);
     color: white;
     font-size: 19px;
     padding: 0 1em;
