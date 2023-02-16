@@ -59,6 +59,7 @@ body, html {
     display: flex;
     align-items: left;
     justify-content: left;
+    width: 100%;
     border-bottom: 2px solid var(--background-2);
 }
 #tag-input {
@@ -76,7 +77,21 @@ body, html {
     color: rgb(224, 224, 224);
   }
 #post-container {
+
+    width: 80%;
+    height: 80%;
+    margin: auto;
+    margin-top: 1em;
+    padding: 10px;
+}
+#post-info {
+    width: auto;
+    height: auto;
     background-color: var(--background-2);
+}
+.post-image {
+    max-width: 50em;
+    max-height: 50em;
 }
 input:focus,
 select:focus,
