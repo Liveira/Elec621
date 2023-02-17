@@ -1,11 +1,16 @@
+const shell_root = document.currentScript.src;
+
+const root = location.href.split(shell_root).join("");
+
+//const cum = document.location.replace(shell_root.replace());
 const style_link = fabricateElement(
-  '<link rel="stylesheet" href="styles/shell.css">'
+  '<link rel="stylesheet" href="/styles/shell.css">'
 );
 const shell_overlay = fabricateElement(
   '<div class="shell_overlay shell_overlay_hidden"></div>'
 );
 
-document.head.appendChild(style_link);
+document.head.append(rootFix, style_link);
 document.body.prepend(shell_overlay);
 
 class Modal {
@@ -23,19 +28,21 @@ class Modal {
     this.container = container;
     return container;
   }
-  createIframe(src) {
+  createIframe(src, iframe_width, iframe_height) {
     const iframe = fabricateElement(
-      `<iframe class="shell_iframe" src="${src}"></iframe>`
+      `<iframe class="shell_iframe" src="${src}" width="${iframe_width}" height="${iframe_height}"></iframe>`
     );
     iframe.addEventListener("load", () => {
       console.log("iframe loaded");
     });
     return iframe;
   }
-  modal_iframe(src) {
+  modal_iframe(src, iframe_width = "80%", iframe_height = "80%") {
     this.createContainer();
     this.show_modal();
-    this.container.appendChild(this.createIframe(src));
+    this.container.appendChild(
+      this.createIframe(src, iframe_width, iframe_height)
+    );
   }
   show_modal() {
     shell_overlay.classList.remove("shell_overlay_hidden");
@@ -50,7 +57,7 @@ class Modal {
 }
 
 const modal = new Modal();
-modal.modal_iframe("pages/relogio.html");
+modal.modal_iframe("pages/relogio.html", "100%", "100%");
 
 function fabricateElement(html) {
   const element = document.createElement("template");
