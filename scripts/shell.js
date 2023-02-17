@@ -1,16 +1,13 @@
-const shell_root = document.currentScript.src;
+let shell_root = document.currentScript.src.replace("/scripts/shell.js", "");
 
-const root = location.href.split(shell_root).join("");
-
-//const cum = document.location.replace(shell_root.replace());
 const style_link = fabricateElement(
-  '<link rel="stylesheet" href="/styles/shell.css">'
+  `<link rel="stylesheet", href="${shell_root}/styles/shell.css">`
 );
 const shell_overlay = fabricateElement(
   '<div class="shell_overlay shell_overlay_hidden"></div>'
 );
 
-document.head.append(rootFix, style_link);
+document.head.append(style_link);
 document.body.prepend(shell_overlay);
 
 class Modal {
@@ -55,9 +52,6 @@ class Modal {
     shell_overlay.classList.add("shell_overlay_anim");
   }
 }
-
-const modal = new Modal();
-modal.modal_iframe("pages/relogio.html", "100%", "100%");
 
 function fabricateElement(html) {
   const element = document.createElement("template");
