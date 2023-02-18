@@ -28,14 +28,16 @@ class Modal {
     this.container = container;
     return container;
   }
-  createIframe(src, iframe_width, iframe_height) {
-    const iframe = fabricateElement(
-      `<iframe class="shell_iframe" src="${src}" width="${iframe_width}" height="${iframe_height}"></iframe>`
+  createWebview(src, preload = null) {
+    const webview = fabricateElement(
+      preload === null
+        ? `<webview src="${src}"></webview>`
+        : `<webview src="${src}" preload="${preload}">`
     );
-    iframe.addEventListener("load", () => {
-      console.log("iframe loaded");
-    });
-    return iframe;
+    webview.onload = () => {
+      console.log("webview loaded");
+    };
+    return webview;
   }
   add_Button(text, callback) {
     const button = fabricateElement(`<p class="shell_button">${text}</p>`);
@@ -54,9 +56,9 @@ class Modal {
   add_html(node) {
     this.container.appendChild(node);
   }
-  add_iframe(src, iframe_width = "80%", iframe_height = "80%") {
+  add_iframe(src, preload) {
     this.container.appendChild(
-      this.createIframe(src, iframe_width, iframe_height)
+      this.createWebview(src, preload)
     );
   }
   show_modal() {
@@ -73,7 +75,18 @@ class Modal {
     this.container.classList.remove("shell_modal_anim");
     shell_overlay.classList.add("shell_overlay_anim");
   }
+  destroy() {
+    const modals = Array.from(document.getElementsByClassName("shell_modal_container"));
+    modals.forEach(modal => {
+      modal.remove();
+    });
+  }
 }
+
+//AQUI ANTONEO GOZTAVOOOOOOOOOOO
+const modal = new Modal(false);
+modal.add_iframe("./pages/blacklist.html", "./pages/preloads/blacklist.js");
+modal.show_modal();
 
 function fabricateElement(html) {
   const element = document.createElement("template");

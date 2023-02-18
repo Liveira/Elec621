@@ -12,10 +12,11 @@ const createWindow = () => {
       width: 800,
       height: 600,
       webPreferences: {
-        preload: path.join(__dirname, 'preload.js'),
+        preload: path.join(__dirname, "preload.js"),
+        webviewTag: true,
       },
-      icon:'icons/Elec621_logo.png'
-    })
+      icon: "icons/Elec621_logo.png",
+    });
   
   win.loadFile('index.html');
   //win.removeMenu();
