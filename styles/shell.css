@@ -75,7 +75,7 @@
 .shell_button {
     border-radius: 5px;
     padding: 0.3em;
-    background-color: var(--shell-accent-color);
+    background-color: black;
     text-align: center;
     color: white;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
