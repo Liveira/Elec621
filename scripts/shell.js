@@ -17,13 +17,17 @@ class Modal {
     this.createContainer();
     this.closeable = closeable;
     shell_overlay.addEventListener("click", () => {
-      this.close_modal_or();
+      this.close_or();
     });
   }
   createContainer() {
     const container = fabricateElement(
       '<div class="shell_modal_container"></div>'
     );
+
+    //This to prevent the overlay from closing if clicked on modal and not on free space
+    container.addEventListener("click", (e) => e.stopPropagation());
+
     shell_overlay.appendChild(container);
     this.container = container;
     return container;
@@ -31,24 +35,27 @@ class Modal {
   createWebview(src, preload = null) {
     const webview = fabricateElement(
       preload === null
-        ? `<webview src="${src}"></webview>`
-        : `<webview src="${src}" preload="${preload}">`
+        ? `<webview class="shell_iframe" src="${src}"></webview>`
+        : `<webview class="shell_iframe" src="${src}" preload="${preload}">`
     );
     webview.onload = () => {
       console.log("webview loaded");
     };
     return webview;
   }
-  add_Button(text, callback) {
+  add_button(text, callback) {
     const button = fabricateElement(`<p class="shell_button">${text}</p>`);
     button.addEventListener("click", callback);
 
-    const button_containers = document.getElementsByClassName("shell_button_container");
+    const button_containers = document.getElementsByClassName(
+      "shell_button_container"
+    );
     if (button_containers.length > 0) {
       button_containers[0].appendChild(button);
-    }
-    else {
-      const button_container = fabricateElement('<div class="shell_button_container"></div>');
+    } else {
+      const button_container = fabricateElement(
+        '<div class="shell_button_container"></div>'
+      );
       button_container.appendChild(button);
       this.add_html(button_container);
     }
@@ -56,34 +63,32 @@ class Modal {
   add_html(node) {
     this.container.appendChild(node);
   }
-  add_iframe(src, preload) {
-    this.container.appendChild(
-      this.createWebview(src, preload)
-    );
+  add_webview(src, preload) {
+    this.container.appendChild(this.createWebview(src, preload));
   }
-  show_modal() {
+  show() {
     shell_overlay.classList.remove("shell_overlay_hidden");
     this.container.classList.add("shell_modal_anim");
     shell_overlay.classList.add("shell_overlay_anim");
   }
-  close_modal_or() {
+  close_or() {
     if (!this.closeable) return;
-    this.close_modal();
+    this.close();
   }
-  close_modal() {
+  close() {
     shell_overlay.classList.add("shell_overlay_hidden");
     this.container.classList.remove("shell_modal_anim");
     shell_overlay.classList.add("shell_overlay_anim");
   }
   destroy() {
-    const modals = Array.from(document.getElementsByClassName("shell_modal_container"));
-    modals.forEach(modal => {
+    const modals = Array.from(
+      document.getElementsByClassName("shell_modal_container")
+    );
+    modals.forEach((modal) => {
       modal.remove();
     });
   }
 }
-
-//AQUI ANTONEO GOZTAVOOOOOOOOOOO
 
 function fabricateElement(html) {
   const element = document.createElement("template");
