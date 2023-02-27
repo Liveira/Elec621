@@ -84,9 +84,6 @@ class Modal {
 }
 
 //AQUI ANTONEO GOZTAVOOOOOOOOOOO
-const modal = new Modal(false);
-modal.add_iframe("./pages/blacklist.html", "./pages/preloads/blacklist.js");
-modal.show_modal();
 
 function fabricateElement(html) {
   const element = document.createElement("template");
