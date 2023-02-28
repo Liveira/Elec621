@@ -72,7 +72,7 @@
     "electron-packager": "^17.1.1"
   },
   "scripts": {
-    "dev": "npx tsx && electron .",
+    "dev": "npm run build && npm run start",
     "start": "electron .",
     "build": "npx tsc"
   },
@@ -81,7 +81,7 @@
     "url": "git+https://github.com/Liveira/Elec621.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Liveira/Elec621/issues"
   },
