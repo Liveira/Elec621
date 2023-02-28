@@ -72,7 +72,7 @@
     "electron-packager": "^17.1.1"
   },
   "scripts": {
-    "dev": "npm run build && npm run start",
+    "dev": "npx tsx && npm run start",
     "start": "electron .",
     "build": "npx tsc"
   },
