@@ -68,17 +68,16 @@ class Modal {
   }
   show() {
     shell_overlay.classList.remove("shell_overlay_hidden");
-    this.container.classList.add("shell_modal_anim");
-    shell_overlay.classList.add("shell_overlay_anim");
   }
-  close_or() {
-    if (!this.closeable) return;
-    this.close();
+  close_or(callback = null) {
+    if (!this.closeable) {
+      callback();
+    } else {
+      this.close();
+    }
   }
   close() {
     shell_overlay.classList.add("shell_overlay_hidden");
-    this.container.classList.remove("shell_modal_anim");
-    shell_overlay.classList.add("shell_overlay_anim");
   }
   destroy() {
     const modals = Array.from(
@@ -88,6 +87,27 @@ class Modal {
       modal.remove();
     });
   }
+}
+
+class Notification {
+  constructor() {}
+  createContainer() {
+    const container = fabricateElement(
+      '<div class="shell_notification"></div>'
+    );
+
+    //This to prevent the overlay from closing if clicked on modal and not on free space
+    container.addEventListener("click", (e) => e.stopPropagation());
+
+    shell_overlay.appendChild(container);
+    this.container = container;
+    return container;
+  }
+  show() {
+    shell_overlay.classList.remove("shell_overlay_hidden");
+  }
+  close_or() {}
+  close() {}
 }
 
 function fabricateElement(html) {

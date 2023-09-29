@@ -69,7 +69,8 @@
   },
   "devDependencies": {
     "electron": "^23.0.0",
-    "electron-packager": "^17.1.1"
+    "electron-packager": "^17.1.1",
+    "tsx": "^3.12.7"
   },
   "scripts": {
     "dev": "npx tsx && npm run start",

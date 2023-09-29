@@ -16,7 +16,7 @@ function load_posts(posts) {
 });
 }
 var searchbar = document.getElementById("tag-input")
-posts_mgmt.input_send(searchbar.value == "" ? "rating:s" : searchbar.value)
+posts_mgmt.input_send(searchbar.value == "" ? "sylveon hyper_penis rating:e" : searchbar.value)
 searchbar.addEventListener("keydown", (e, ev) => {
     var keycode = e.code || e.key;
     if (keycode == "Enter") {
