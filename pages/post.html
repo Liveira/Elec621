@@ -3,20 +3,25 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; img-src *; style-src 'unsafe-inline' 'self';" />
-  <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'unsafe-inline' 'self';" />
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self'; img-src *; style-src 'unsafe-inline' 'self';" />
+  <meta http-equiv="X-Content-Security-Policy"
+    content="default-src 'self'; script-src 'self'; style-src 'unsafe-inline' 'self';" />
   <title>Elec621</title>
-  <script defer src="./scripts/renderer.js"></script>
+  <script defer src="../scripts/post.js"></script>
+  <script defer src="../scripts/shell.js"></script>
   <link rel="stylesheet" href="../styles/style.css">
 </head>
 
 <body>
   <div id="mainContainer">
     <div class="bar" id="topBar">
-      
+      <input type="text" id="tag-input" placeholder='Type tags here'>
     </div>
     <div id='post-container'>
-        <img src="" alt="">
+      <div id="post"></div>
+      <div id="post-info">Gustavo. Se você não me ama. Então não me ligue. E não delete os meus textos placeholder
+      </div>
     </div>
   </div>
 </body>

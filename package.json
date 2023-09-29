@@ -59,16 +59,21 @@
     "serialize-error": "^7.0.1",
     "sprintf-js": "^1.1.2",
     "sumchecker": "^3.0.1",
+    "ts-node": "^10.9.1",
     "type-fest": "^0.13.1",
+    "typescript": "^4.9.5",
     "universalify": "^0.1.2",
     "wrappy": "^1.0.2",
     "yallist": "^4.0.0",
     "yauzl": "^2.10.0"
   },
   "devDependencies": {
-    "electron": "^23.0.0"
+    "electron": "^23.0.0",
+    "electron-packager": "^17.1.1",
+    "tsx": "^3.12.7"
   },
   "scripts": {
+    "dev": "npx tsx && npm run start",
     "start": "electron .",
     "build": "npx tsc"
   },
